@@ -19,7 +19,12 @@ class _TopNavWidgetState extends State<TopNavWidget>  with SingleTickerProviderS
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = TabController(vsync: this, length: _navConfigList.length);
+    _controller = TabController(vsync: this, length: _navConfigList.length)..addListener((){
+       if(_controller.index.toDouble() == _controller.animation.value){
+         // todo
+         print(_controller.index);
+       }
+    });
   }
   @override
   void dispose() {
@@ -31,7 +36,6 @@ class _TopNavWidgetState extends State<TopNavWidget>  with SingleTickerProviderS
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: Text('XFDFD'),
         title: TabBar(
           controller: _controller,
           tabs: _navConfigList.map((item){
@@ -42,8 +46,8 @@ class _TopNavWidgetState extends State<TopNavWidget>  with SingleTickerProviderS
       body: TabBarView(
         controller: _controller,
         children: _navConfigList.map((item){
-          print(item);
-          print(_paramMap[item]);
+          // print(item);
+          // print(_paramMap[item]);
           return ListPageWidget(param: _paramMap[item]);
         }).toList(),
       ),
