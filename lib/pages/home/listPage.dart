@@ -8,8 +8,7 @@ class ListPageWidget extends StatefulWidget {
   _ListPageWidgetState createState() => _ListPageWidgetState();
 }
 
-class _ListPageWidgetState extends State<ListPageWidget>
-    with AutomaticKeepAliveClientMixin<ListPageWidget> {
+class _ListPageWidgetState extends State<ListPageWidget> with AutomaticKeepAliveClientMixin<ListPageWidget> {
   String _currentParam = '';
   List _renderData = new List();
   Map _tabCnMap = {
@@ -47,25 +46,19 @@ class _ListPageWidgetState extends State<ListPageWidget>
       result = 'Failed getting IP address';
     }
     setState(() {
-      // _renderData = ['xfdf', '233ffd'];
       _renderData = result;
-      print(_renderData);
+      // print(_renderData);
     });
   }
 
-  List<Widget> _renderList() {
-    return _renderData.map((data) {
+  Widget _renderList(data) {
       var lastReplyTimeISO = data['last_reply_at'].replaceAll('T', ' ');
       var now = new DateTime.now();
-      // print(DateTime.parse(lastReplyTime).difference(now).inDays);
       var diff = now.difference(DateTime.parse(lastReplyTimeISO));
       var diffDays = diff.inDays;
       var diffHours = diff.inDays;
       var diffMin = diff.inMinutes;
       var lastReplyTime = '';
-      print(diffDays);
-      print(diffHours);
-      print(diffMin);
       if(diffDays == 0){
         if(diffHours == 0){
           lastReplyTime = diffMin.toString() + '分钟前';
@@ -75,6 +68,7 @@ class _ListPageWidgetState extends State<ListPageWidget>
       }else{
         lastReplyTime = diffDays.toString() + "天前";
       }
+
       return Container(
         child: Column(
           children: <Widget>[
@@ -164,7 +158,7 @@ class _ListPageWidgetState extends State<ListPageWidget>
           ],
         ),
       );
-    }).toList();
+
   }
 
   @override
@@ -183,6 +177,14 @@ class _ListPageWidgetState extends State<ListPageWidget>
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-        onRefresh: _handelRefresh, child: Column(children: _renderList()));
+        onRefresh: _handelRefresh,
+        child: ListView.builder(
+          itemCount: _renderData.length,
+          itemBuilder: (context, i) {
+            return _renderList(_renderData[i]);
+          },
+        ),
+        // child: Column(children: _renderList())
+      );
   }
 }
