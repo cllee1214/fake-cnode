@@ -93,7 +93,9 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _renderPage() {
     return _renderData == null
-        ? Text('dfdf')
+        ? AlertDialog(
+          title: Text('正在加载，请稍后...'),
+        )
         : Column(
             children: <Widget>[
               Row(

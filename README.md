@@ -1,16 +1,22 @@
-# myapp
+# cnode客户端（flutter）
 
-A new Flutter project.
+### 介绍
 
-## Getting Started
+- 基于flutter的cnode客户端
+- api来自cnode社区，参考 https://cnodejs.org/api
 
-This project is a starting point for a Flutter application.
+### 已完成功能：
 
-A few resources to get you started if this is your first Flutter project:
+- 内容导航（全部、精华、分享、回答、招聘）
+- 底部模块导航（主页、收藏、消息、更多）
+- 详情
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+### todo
+- ~~扫码登录~~
+- ~~收藏 信息（具体实现）~~
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### 截图
+
+- ![列表页面](lib/1.png "列表页面")
+
+- ![页面内容详情](lib/2.png "页面内容详情")
