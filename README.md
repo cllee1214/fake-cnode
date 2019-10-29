@@ -17,6 +17,6 @@
 
 ### 截图
 
-- ![列表页面](https://github.com/cllee1214/fake-cnode/blob/master/info/1.png "列表页面")
+- ![列表页面](info/1.png "列表页面")
 
-- ![页面内容详情](https://github.com/cllee1214/fake-cnode/blob/master/info/2.png "页面内容详情")
+- ![页面内容详情](info/2.png "页面内容详情")
